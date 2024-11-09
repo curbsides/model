@@ -11,4 +11,10 @@ version = "0.1.0"
 python = ">=3.13.0,<4"
 ipykernel = ">=6.29.5,<7"
 pytorch = ">=2.5.1,<3"
+cuda = ">=12.6.2,<13"
 torchvision = ">=0.20.1,<0.21"
+pandas = ">=2.2.3,<3"
+pyarrow = ">=18.0.0,<19"
+
+[system-requirements]
+cuda = "12"
