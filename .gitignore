@@ -167,3 +167,5 @@ cython_debug/
 
 images/
 tmp_datasets/
+lightning_logs/
+sf_images/
