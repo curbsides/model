@@ -169,3 +169,4 @@ images/
 tmp_datasets/
 lightning_logs/
 sf_images/
+sf_images_augmented/
