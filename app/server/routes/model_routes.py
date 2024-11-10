@@ -1,7 +1,5 @@
-import random
 import os
-from fastapi import APIRouter, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter
 from dotenv import load_dotenv
 from botocore.exceptions import NoCredentialsError, ClientError
 import boto3
