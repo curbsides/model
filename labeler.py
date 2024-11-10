@@ -87,7 +87,7 @@ def labeler():
     # Handle labeling actions
     def label_true():
         nonlocal labeled_count
-        save_label(image_name, 'true')
+        save_label(image_name, '1')
         labeled_count += 1
         count_label.config(text=f"Labeled images: {labeled_count}")
         flash_background('green')
@@ -95,7 +95,7 @@ def labeler():
         
     def label_false():
         nonlocal labeled_count
-        save_label(image_name, 'false')
+        save_label(image_name, '0')
         labeled_count += 1
         count_label.config(text=f"Labeled images: {labeled_count}")
         flash_background('red')
