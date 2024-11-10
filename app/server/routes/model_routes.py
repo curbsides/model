@@ -28,7 +28,7 @@ async def serve_image(filename: str):
         blob_data = s3_object["Body"].read()
 
         # run model here
-        return {"result": False}
+        return {"result": infer(blob_data)}
 
 
     except NoCredentialsError:
@@ -37,3 +37,22 @@ async def serve_image(filename: str):
     except ClientError:
        print("ERROR")
        return {"result": False}
+
+
+def infer(file_path):
+    from transformers import ViTForImageClassification, AutoImageProcessor
+    import torch
+    from PIL import Image
+
+    model = ViTForImageClassification.from_pretrained("google/vit-base-patch16-224-in21k", attn_implementation="sdpa", torch_dtype=torch.float16)
+    model.to("cuda")
+    image_processor = AutoImageProcessor.from_pretrained("google/vit-base-patch16-224-in21k",use_fast=True)
+    inputs = image_processor(blob_data, return_tensors="pt")
+    inputs.to("cuda")
+
+    with torch.no_grad():
+        logits = model(**inputs).logits
+        
+    predicted_label = logits.argmax(-1).item()
+    returnbool predicted_label 
+    print(model.config.id2label[predicted_label])
